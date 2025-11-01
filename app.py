@@ -1,20 +1,13 @@
-from flask import Flask, render_template 
+from flask import Flask, render_template,request 
 
 app = Flask(__name__)
 
-# @app.route("/")
-# def student_profile():
-#     return render_template(
-#         'profile.html',
-#         name = "Hangthim",
-#         is_topper = True,
-#         subjects = ['science','maths','history']
-#     )
+@app.route('/feedback',methods=["GET","POST"])
+def feedback():
+    if request.method == "POST":
+        name = request.form.get("username")
+        message = request.form.get("message")
 
-@app.route('/')
-def home():
-    return render_template('home.html')
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
+        return render_template("thankyou.html",user=name,message=message)
+    
+    return render_template("feedback.html")
