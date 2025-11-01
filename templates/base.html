@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %} My feedback site {% endblock %}</title>
+    <title>{% block title %} Flask-WTF form {% endblock %}</title>
 </head>
 <body>
-    <header>
+    <!-- <header>
         <h1>Welcome to my site</h1>
-        <nav>
+        <nav>s
             <a href="/">Home</a>
         </nav>
-    </header>
-    {% with messages = get_flashed_messages() %}
+    </header> -->
+    <h1>Flask-WTF Registration Form.</h1>
+    {% with messages = get_flashed_messages(with_categories=True) %}
+    <!-- [('success','successfully terminated'),('error','You have an error in your code !')]  When used with_categories = TRUE -->
     {% if messages %}
-    <ul style="color:green;">
-        {% for msg in messages %}
-        <li>{{msg}}</li>
+    <!-- <ul style="color:green;"> -->
+        {% for category,msg in messages %}
+        <!-- <p class={{category}}>{{msg}}</p> -->
+        <p style="color:green;">{{ msg }}</p>
+        <!-- <li>{{msg}}</li> -->
         {% endfor %}
 
-    </ul>
+    <!-- </ul> -->
     {% endif %}
     {% endwith %}
     <main>
