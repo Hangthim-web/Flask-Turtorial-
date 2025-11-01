@@ -1,0 +1,22 @@
+jinja 2 
+
+1 -> python values 
+{{ variable }}
+
+{{ name }}
+
+<p>Welcome {{name}}</p>
+
+2-> conditionals 
+{% if %} ... {% endif %} 
+
+is_topper = True 
+{% is_topper %}
+<p>You are a toppper</p>
+
+{% else %}
+<p>You need to work hard</p>
+{{% endif %}}
+
+
+#### template inheritance in jinja 2 #### 
