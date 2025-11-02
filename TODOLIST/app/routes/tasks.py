@@ -14,7 +14,7 @@ def view_task():
     return render_template('tasks.html',tasks=tasks)
 
 
-@tasks_bp.route('/add',methods=['POSTS'])
+@tasks_bp.route('/add',methods=['POST'])
 def add_task():
     if 'user' not in session:
         return redirect(url_for('auth.login'))
@@ -25,7 +25,7 @@ def add_task():
         db.session.commit()
         flash("Task added successfully",'success')
 
-    return redirect(url_for('tasks.view_tasks'))
+    return redirect(url_for('tasks.view_task'))
 
 @tasks_bp.route('/toggle/<int:task_id>',methods=["POST"])
 def toggle_status(task_id):
@@ -40,9 +40,9 @@ def toggle_status(task_id):
         db.session.commit()
     return redirect(url_for('tasks.view_task'))
 
-@tasks_bp.route('/clear',method=["POST"])
+@tasks_bp.route('/clear',methods=["POST"])
 def clear_tasks():
     Task.query.delete()
     db.session.commit()
     flash('All task cleared','info')
-    return redirect(url_for('tasks.view_tasks'))
+    return redirect(url_for('tasks.view_task'))

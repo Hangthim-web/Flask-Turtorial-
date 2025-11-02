@@ -19,7 +19,7 @@ def login():
         else:
             flash('Invalid Username or password','danger')
     
-    return render_template('login.html')
+    return render_template('tasks.html')
 
 @auth_bp.route('/logout')
 def logout():
